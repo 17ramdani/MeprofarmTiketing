@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Mail;
+use App\Mail\TiketingMail;
 
 class Tiketing extends Model
 {
@@ -26,5 +28,15 @@ class Tiketing extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($item) {
+
+            $adminEmail = "17rome01@gmail.com";
+            Mail::to($adminEmail)->send(new TiketingMail($item));
+        });
     }
 }
