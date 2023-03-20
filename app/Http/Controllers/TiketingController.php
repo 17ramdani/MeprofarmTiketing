@@ -46,23 +46,12 @@ class TiketingController extends Controller
         return redirect()->route('user.login')->with('success', 'Data berhasil disimpan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function detail($id)
     {
-        //
+        $data = Tiketing::where('id', $id)->firstOrFail();
+        return view('admin.detail', compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //

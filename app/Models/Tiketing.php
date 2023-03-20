@@ -10,7 +10,7 @@ use App\Mail\TiketingMail;
 
 class Tiketing extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $table = "tiketing";
     protected $primaryKey = "id";
     protected $fillable = [

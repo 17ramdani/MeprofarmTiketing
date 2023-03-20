@@ -52,13 +52,36 @@
                                         <th>Nama</th>
                                         <th>Departemen</th>
                                         <th>Kendala</th>
-                                        <th>EXT</th>
+                                        <th>Status</th>
                                         <th>Tanggal</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                    @foreach ($data as $tiketing)
+                                        <tr>
+                                            <td>{{ $tiketing->nik }}</td>
+                                            <td>{{ $tiketing->nama }}</td>
+                                            <td>{{ $tiketing->dep }}</td>
+                                            <td>{{ $tiketing->category->name }}</td>
+                                            <td>
+                                                @if ($tiketing->status == 'pending')
+                                                    <span
+                                                        class="badge rounded-pill text-danger bg-light-danger p-2 text-uppercase px-3"><i
+                                                            class='bx bxs-circle align-middle me-1'></i>{{ $tiketing->status }}</span>
+                                                @else
+                                                    <span
+                                                        class="badge rounded-pill text-success bg-light-success p-2 text-uppercase px-3"><i
+                                                            class='bx bxs-circle align-middle me-1'></i>{{ $tiketing->status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>{{ $tiketing->tgl_pengajuan }}</td>
+                                            <td>
+                                                <a href="{{ route('tiketing.detail', $tiketing['id']) }}"
+                                                    class="btn btn-primary btn-sm radius-30 px-4">Detail</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -66,7 +89,7 @@
                                         <th>Nama</th>
                                         <th>Departemen</th>
                                         <th>Kendala</th>
-                                        <th>EXT</th>
+                                        <th>Status</th>
                                         <th>Tanggal</th>
                                         <th>Action</th>
                                     </tr>

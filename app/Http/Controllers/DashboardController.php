@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tiketing;
 
 class DashboardController extends Controller
 {
@@ -23,7 +24,9 @@ class DashboardController extends Controller
      */
     public function read()
     {
-        return view('admin.tiketing');
+        $data = Tiketing::with('category')->get();
+
+        return view('admin.tiketing')->with(['data' => $data]);
     }
 
     /**
