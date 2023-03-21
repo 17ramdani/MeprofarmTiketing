@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Tiketing;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Alert;
 
 
 class TiketingController extends Controller
@@ -49,34 +50,33 @@ class TiketingController extends Controller
     public function detail($id)
     {
         $data = Tiketing::where('id', $id)->firstOrFail();
-        return view('admin.detail', compact('data'));
+        return view('admin.detail', compact('data', 'id'));
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $data = Tiketing::findOrFail($id);
+
+        $request->validate([
+            'category_id' => 'required',
+            'status' => 'required',
+            'catatan' => 'required'
+        ]);
+
+        $data->category_id = $request->category_id;
+        $data->status = $request->status;
+        $data->catatan = $request->catatan;
+
+        $data->save();
+        toast('Data Berhasil Diupdate', 'Success');
+        return redirect()->route('tiketing.read');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $data = Tiketing::findOrFail($id);
+        $data->delete();
+        toast('Data Berhasil Hapus', 'Success');
+        return redirect()->route('tiketing.read');
     }
 }

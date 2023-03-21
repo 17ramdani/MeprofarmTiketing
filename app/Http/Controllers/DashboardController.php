@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tiketing;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -14,7 +15,18 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $total = Tiketing::count();
+        $pending = Tiketing::where('status', 'pending')->count();
+        $selesai = Tiketing::where('status', 'selesai')->count();
+        $user = DB::table('tiketing')
+            ->select(DB::raw('count(distinct nik) as total'))
+            ->get();
+
+        $totalUser = $user[0]->total;
+
+        return view('admin.dashboard', [
+            'pending' => $pending, 'selesai' => $selesai, 'total' => $total, 'totalUser' => $totalUser
+        ]);
     }
 
     /**

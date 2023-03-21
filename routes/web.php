@@ -32,9 +32,9 @@ Route::post('/tiketing/store', [TiketingController::class, 'store'])->name('tike
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/tiketing', [DashboardController::class, 'read'])->name('tiketing.read');
-    Route::get('/detail/{$id}', [TiketingController::class, 'detail'])->name('tiketing.detail');
-    Route::post('/update', [TiketingController::class, 'update'])->name('tiketing.update');
-    Route::get('/delete', [TiketingController::class, 'destroy'])->name('tiketing.delete');
+    Route::get('/detail/{id}', [TiketingController::class, 'detail'])->name('tiketing.detail');
+    Route::put('/update/{id}', [TiketingController::class, 'update'])->name('tiketing.update');
+    Route::delete('/delete/{id}', [TiketingController::class, 'destroy'])->name('tiketing.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
