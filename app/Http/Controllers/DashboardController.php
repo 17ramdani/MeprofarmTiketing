@@ -15,17 +15,27 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        //count data
         $total = Tiketing::count();
         $pending = Tiketing::where('status', 'pending')->count();
         $selesai = Tiketing::where('status', 'selesai')->count();
         $user = DB::table('tiketing')
             ->select(DB::raw('count(distinct nik) as total'))
             ->get();
-
         $totalUser = $user[0]->total;
 
+        //chart data
+        $data = Tiketing::select(DB::raw('category_id, count(*) as total'))
+            ->groupBy('category_id')
+            ->get();
+
+        $chartData = [];
+        foreach ($data as $item) {
+            $chartData[$item->category_id] = $item->total;
+        }
+
         return view('admin.dashboard', [
-            'pending' => $pending, 'selesai' => $selesai, 'total' => $total, 'totalUser' => $totalUser
+            'pending' => $pending, 'selesai' => $selesai, 'total' => $total, 'totalUser' => $totalUser, 'chartData' => $chartData
         ]);
     }
 

@@ -111,7 +111,7 @@
                         <form action="{{ route('tiketing.destroy', $id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger"
+                            <button type="submit" class="btn btn-danger mt-2"
                                 onclick="return confirm('Anda yakin mau menghapus item ini ?')">Hapus </button>
                         </form>
                     </div>

@@ -43,6 +43,7 @@
     <script src="{{ asset('style/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.j') }}"></script>
     <script src="{{ asset('style/assets/plugins/chartjs/js/Chart.min.js') }}"></script>
     <script src="{{ asset('style/assets/plugins/chartjs/js/Chart.extension.js') }}"></script>
+    <script src="{{ asset('style/assets/plugins/chartjs/js/chartjs-custom.js') }}"></script>
     <script src="{{ asset('style/assets/js/index.js') }}"></script>
     <script src="{{ asset('style/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('style/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
@@ -61,21 +62,6 @@
             table.buttons().container()
                 .appendTo('#example2_wrapper .col-md-6:eq(0)');
         });
-    </script>
-    <script>
-        function deleteData() {
-            swal({
-                title: 'Apakah Anda yakin?',
-                text: 'Data yang dihapus tidak dapat dikembalikan!',
-                icon: 'warning',
-                buttons: ['Batal', 'Ya, hapus saja!'],
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    document.getElementById('delete-form').submit();
-                }
-            });
-        }
     </script>
     </div>
     <!--app JS-->
