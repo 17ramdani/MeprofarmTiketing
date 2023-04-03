@@ -16,6 +16,10 @@ class DashboardController extends Controller
     public function index()
     {
         //count data
+        $hardware = Tiketing::where('category_id', '2')->count();
+        $software = Tiketing::where('category_id', '1')->count();
+        $network = Tiketing::where('category_id', '3')->count();
+        $lain_lain = Tiketing::where('category_id', '4')->count();
         $total = Tiketing::count();
         $pending = Tiketing::where('status', 'pending')->count();
         $selesai = Tiketing::where('status', 'selesai')->count();
@@ -23,19 +27,14 @@ class DashboardController extends Controller
             ->select(DB::raw('count(distinct nik) as total'))
             ->get();
         $totalUser = $user[0]->total;
-
-        //chart data
-        $data = Tiketing::select(DB::raw('category_id, count(*) as total'))
-            ->groupBy('category_id')
+        $data = DB::table('tiketing')
+            ->select(DB::raw('DATE(created_at) as tanggal'), DB::raw('count(*) as total'))
+            ->groupBy('tanggal')
             ->get();
 
-        $chartData = [];
-        foreach ($data as $item) {
-            $chartData[$item->category_id] = $item->total;
-        }
-
         return view('admin.dashboard', [
-            'pending' => $pending, 'selesai' => $selesai, 'total' => $total, 'totalUser' => $totalUser, 'chartData' => $chartData
+            'pending' => $pending, 'selesai' => $selesai, 'total' => $total, 'totalUser' => $totalUser, 'hardware' => $hardware,
+            'software' => $software, 'network' =>  $network, 'lain_lain' => $lain_lain, 'data' => $data
         ]);
     }
 

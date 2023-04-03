@@ -47,6 +47,7 @@
     <script src="{{ asset('style/assets/js/index.js') }}"></script>
     <script src="{{ asset('style/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('style/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $(document).ready(function() {
             $('#example').DataTable();

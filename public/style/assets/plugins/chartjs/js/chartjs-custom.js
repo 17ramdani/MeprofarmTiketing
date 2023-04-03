@@ -61,9 +61,9 @@ $(function () {
 	// chart 2
 	var ctx = document.getElementById("chart2").getContext('2d');
 	var myChart = new Chart(ctx, {
-		type: 'bar',
+		type: 'pie',
 		data: {
-			labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+			labels: [],
 			datasets: [{
 				label: 'Google',
 				data: [13, 8, 20, 4, 18, 29, 25],

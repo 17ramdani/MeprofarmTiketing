@@ -158,62 +158,125 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-12 col-lg-4">
                         <div class="card radius-10">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <h6 class="mb-0">Trending Products</h6>
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary"> Kategori Kendala</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle btn btn-primary btn-sm" href="#" role="button"
+                                        id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        Month <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                        aria-labelledby="dropdownMenuLink">
+                                        <div class="dropdown-header">Select Periode</div>
+                                        <a class="dropdown-item" href="#">Today</a>
+                                        <a class="dropdown-item" href="#">Week</a>
+                                        <a class="dropdown-item active" href="#">Month</a>
+                                        <a class="dropdown-item" href="#">This Year</a>
                                     </div>
-                                    <div class="dropdown ms-auto">
-                                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
-                                            data-bs-toggle="dropdown"><i
-                                                class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                            </li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="chart-container-2 mt-4">
-                                    <canvas id="chart2"></canvas>
                                 </div>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li
-                                    class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                    Hardware <span class="badge bg-success rounded-pill">25</span>
-                                </li>
-                                <li
-                                    class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                    Software <span class="badge bg-danger rounded-pill">10</span>
-                                </li>
-                                <li
-                                    class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                    Network <span class="badge bg-primary rounded-pill">65</span>
-                                </li>
-                                <li
-                                    class="list-group-item d-flex bg-transparent justify-content-between align-items-center">
-                                    Lainnya <span class="badge bg-warning text-dark rounded-pill">14</span>
-                                </li>
-                            </ul>
+                            <div class="mb-3 p-2">
+                                <div class="small text-gray-500">Hardware
+                                    <div class="small float-right"><b>{{ $hardware }} of {{ $total }}</b>
+                                    </div>
+                                </div>
+                                <div class="progress" style="height: 12px;">
+                                    <div class="progress-bar bg-warning" role="progressbar"
+                                        style="width: {{ ($hardware / $total) * 100 }}%"
+                                        aria-valuenow="{{ ($hardware / $total) * 100 }}" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 p-2">
+                                <div class="small text-gray-500">Software
+                                    <div class="small float-right"><b>{{ $software }} of {{ $total }}</b>
+                                    </div>
+                                </div>
+                                <div class="progress" style="height: 12px;">
+                                    <div class="progress-bar bg-success" role="progressbar"
+                                        style="width: {{ ($software / $total) * 100 }}%"
+                                        aria-valuenow="{{ ($software / $total) * 100 }}" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 p-2">
+                                <div class="small text-gray-500">Network
+                                    <div class="small float-right"><b>{{ $network }} of {{ $total }}</b>
+                                    </div>
+                                </div>
+                                <div class="progress" style="height: 12px;">
+                                    <div class="progress-bar bg-danger" role="progressbar"
+                                        style="width: {{ ($network / $total) * 100 }}%"
+                                        aria-valuenow="{{ ($network / $total) * 100 }}" aria-valuemin="0"
+                                        aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 p-2">
+                                <div class="small text-gray-500">Lain - Lain
+                                    <div class="small float-right"><b>{{ $lain_lain }} of {{ $total }}</b>
+                                    </div>
+                                </div>
+                                <div class="progress" style="height: 12px;">
+                                    <div class="progress-bar bg-info" role="progressbar"
+                                        style="width: {{ ($lain_lain / $total) * 100 }}%"
+                                        aria-valuenow="{{ ($lain_lain / $total) * 100 }}" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a class="m-0 small text-primary card-link" href="#">View More <i
+                                        class="fas fa-chevron-right"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--end row-->
+                    <!--end row-->
 
+                </div>
             </div>
+            <!--end page wrapper -->
+            @include('layout.theme')
+            @include('layout.footer')
         </div>
-        <!--end page wrapper -->
-        @include('layout.theme')
-        @include('layout.footer')
-    </div>
-@endsection
+        {{-- <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [
+                        @foreach ($data as $row)
+                        '{{ $row->tanggal }}',
+                        @endforeach
+                    ],
+                    datasets: [{
+                        label: 'Kunjungan Tiket',
+                        data: [
+                            @foreach ($data as $row)
+                            {{ $row->total }},
+                            @endforeach
+                        ],
+                        backgroundColor: 'transparent',
+                        borderColor: 'rgba(255,99,132,1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            });
+            </script> --}}
+    @endsection
