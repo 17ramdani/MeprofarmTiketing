@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{ asset('style/assets/css/dark-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/css/semi-dark.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/css/header-colors.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('style/assets/css/plugins/dataTable/css/dataTable.bootstrap5.mis.js') }}"> -->
+
     <title>Tiketing - Meprofarm </title>
 </head>
 
@@ -35,6 +37,7 @@
     <!-- Bootstrap JS -->
     <script src="{{ asset('style/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css"> -->
     <script src="{{ asset('style/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('style/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('style/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
