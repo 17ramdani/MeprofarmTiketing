@@ -43,8 +43,8 @@ class TiketingController extends Controller
         $data->save();
 
         // Auth::logout();
-        toast('Data Berhasil Dikirim', 'Success');
-        return redirect()->route('page.index')->with('success', 'Data berhasil disimpan.');
+        Alert::success('Data Berhasil Dikirim', 'Kami mengucapkan terima kasih kepada ' . $data->nama . ' atas pengajuan perbaikan.');
+        return redirect()->route('page.index');
     }
 
     public function detail($id)

@@ -33,6 +33,7 @@ Route::post('/tiketing/store', [TiketingController::class, 'store'])->name('tike
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/tiketing', [DashboardController::class, 'read'])->name('tiketing.read');
+    Route::get('/laporan', [DashboardController::class, 'report'])->name('tiketing.report');
     Route::get('/detail/{id}', [TiketingController::class, 'detail'])->name('tiketing.detail');
     Route::put('/update/{id}', [TiketingController::class, 'update'])->name('tiketing.update');
     Route::delete('/delete/{id}', [TiketingController::class, 'destroy'])->name('tiketing.destroy');

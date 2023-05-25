@@ -31,7 +31,7 @@ class TiketingMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Contact US - ' . $this->data->subject)
+        return $this->subject('Mepro Tiketing - ' . $this->data->subject)
             ->view('emails.tiket');
     }
 }

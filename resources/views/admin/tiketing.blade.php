@@ -48,6 +48,7 @@
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>NIK</th>
                                         <th>Nama</th>
                                         <th>Departemen</th>
@@ -60,6 +61,7 @@
                                 <tbody>
                                     @foreach ($data as $tiketing)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $tiketing->nik }}</td>
                                             <td>{{ $tiketing->nama }}</td>
                                             <td>{{ $tiketing->dep }}</td>

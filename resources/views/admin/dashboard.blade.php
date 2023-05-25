@@ -98,86 +98,25 @@
                 <!--end row-->
 
                 <div class="row">
+
                     <div class="col-12 col-lg-8">
                         <div class="card radius-10">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <h6 class="mb-0">Sales Overview</h6>
-                                    </div>
-                                    <div class="dropdown ms-auto">
-                                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#"
-                                            data-bs-toggle="dropdown"><i
-                                                class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                            </li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center ms-auto font-13 gap-2 my-3">
-                                    <span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1"
-                                            style="color: #14abef"></i>Sales</span>
-                                    <span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1"
-                                            style="color: #ffc107"></i>Visits</span>
-                                </div>
-                                <div class="chart-container-1">
-                                    <canvas id="chart1"></canvas>
-                                </div>
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary"> Statistik Data</h6>
                             </div>
-                            <div class="row row-cols-1 row-cols-md-3 row-cols-xl-3 g-0 row-group text-center border-top">
-                                <div class="col">
-                                    <div class="p-3">
-                                        <h5 class="mb-0">24.15M</h5>
-                                        <small class="mb-0">Overall Visitor <span> <i
-                                                    class="bx bx-up-arrow-alt align-middle"></i> 2.43%</span></small>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="p-3">
-                                        <h5 class="mb-0">12:38</h5>
-                                        <small class="mb-0">Visitor Duration <span> <i
-                                                    class="bx bx-up-arrow-alt align-middle"></i> 12.65%</span></small>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="p-3">
-                                        <h5 class="mb-0">639.82</h5>
-                                        <small class="mb-0">Pages/Visit <span> <i
-                                                    class="bx bx-up-arrow-alt align-middle"></i> 5.62%</span></small>
-                                    </div>
-                                </div>
+                            <div class="chart-container">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a class="m-0 small text-primary card-link" href="#">View More <i
+                                        class="fas fa-chevron-right"></i></a>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-12 col-lg-4">
                         <div class="card radius-10">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary"> Kategori Kendala</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle btn btn-primary btn-sm" href="#" role="button"
-                                        id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        Month <i class="fas fa-chevron-down"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                        aria-labelledby="dropdownMenuLink">
-                                        <div class="dropdown-header">Select Periode</div>
-                                        <a class="dropdown-item" href="#">Today</a>
-                                        <a class="dropdown-item" href="#">Week</a>
-                                        <a class="dropdown-item active" href="#">Month</a>
-                                        <a class="dropdown-item" href="#">This Year</a>
-                                    </div>
-                                </div>
                             </div>
                             <div class="mb-3 p-2">
                                 <div class="small text-gray-500">Hardware
@@ -185,7 +124,7 @@
                                     </div>
                                 </div>
                                 <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-warning" role="progressbar"
+                                    <div class="progress-bar progress-bar-striped bg-warning " role="progressbar"
                                         style="width: {{ ($hardware / $total) * 100 }}%"
                                         aria-valuenow="{{ ($hardware / $total) * 100 }}" aria-valuemin="0"
                                         aria-valuemax="100">
@@ -198,7 +137,7 @@
                                     </div>
                                 </div>
                                 <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-success" role="progressbar"
+                                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
                                         style="width: {{ ($software / $total) * 100 }}%"
                                         aria-valuenow="{{ ($software / $total) * 100 }}" aria-valuemin="0"
                                         aria-valuemax="100"></div>
@@ -210,7 +149,7 @@
                                     </div>
                                 </div>
                                 <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-danger" role="progressbar"
+                                    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar"
                                         style="width: {{ ($network / $total) * 100 }}%"
                                         aria-valuenow="{{ ($network / $total) * 100 }}" aria-valuemin="0"
                                         aria-valuemax="100">
@@ -223,7 +162,7 @@
                                     </div>
                                 </div>
                                 <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-info" role="progressbar"
+                                    <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
                                         style="width: {{ ($lain_lain / $total) * 100 }}%"
                                         aria-valuenow="{{ ($lain_lain / $total) * 100 }}" aria-valuemin="0"
                                         aria-valuemax="100"></div>
@@ -242,41 +181,35 @@
             <!--end page wrapper -->
             @include('layout.theme')
             @include('layout.footer')
-        </div>
-        {{-- <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: [
-                        @foreach ($data as $row)
-                        '{{ $row->tanggal }}',
-                        @endforeach
-                    ],
-                    datasets: [{
-                        label: 'Kunjungan Tiket',
-                        data: [
-                            @foreach ($data as $row)
-                            {{ $row->total }},
-                            @endforeach
-                        ],
-                        backgroundColor: 'transparent',
-                        borderColor: 'rgba(255,99,132,1)',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var chartData = @json($chart);
+
+                    var bulan = chartData.map(data => data.bulan);
+                    var jumlah = chartData.map(data => data.jumlah);
+
+                    var ctx = document.getElementById('myChart').getContext('2d');
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: bulan,
+                            datasets: [{
+                                label: 'Jumlah Perbaikan',
+                                data: jumlah,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
                             }
-                        }]
-                    },
-                    legend: {
-                        display: false
-                    }
-                }
-            });
-            </script> --}}
-    @endsection
+                        }
+                    });
+                });
+            </script>
+        @endsection

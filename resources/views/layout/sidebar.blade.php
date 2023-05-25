@@ -27,7 +27,7 @@
             </a>
         </li>
         <li>
-            <a href="widgets.html">
+            <a href="{{ route('tiketing.report') }}">
                 <div class="parent-icon"><i class='bx bx-chart'></i>
                 </div>
                 <div class="menu-title">Laporan </div>

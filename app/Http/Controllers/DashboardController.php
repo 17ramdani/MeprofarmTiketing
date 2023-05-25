@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tiketing;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -32,9 +33,31 @@ class DashboardController extends Controller
             ->groupBy('tanggal')
             ->get();
 
+        $chartData = Tiketing::selectRaw("DATE_FORMAT(tgl_pengajuan, '%b') as bulan, COUNT(*) as jumlah")
+            ->groupBy('bulan')
+            ->orderByRaw("MONTH(tgl_pengajuan)")
+            ->get();
+
+        $bulanList = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ];
+
+        $jumlahPerbaikan = array_fill_keys($bulanList, 0);
+
+        foreach ($chartData as $data) {
+            $bulan = $data->bulan;
+            $jumlah = $data->jumlah;
+            $jumlahPerbaikan[$bulan] = $jumlah;
+        }
+
+        $chart = [];
+        foreach ($bulanList as $bulan) {
+            $chart[] = ['bulan' => $bulan, 'jumlah' => $jumlahPerbaikan[$bulan]];
+        }
+
         return view('admin.dashboard', [
             'pending' => $pending, 'selesai' => $selesai, 'total' => $total, 'totalUser' => $totalUser, 'hardware' => $hardware,
-            'software' => $software, 'network' =>  $network, 'lain_lain' => $lain_lain, 'data' => $data
+            'software' => $software, 'network' =>  $network, 'lain_lain' => $lain_lain, 'data' => $data, 'chart' => $chart
         ]);
     }
 
@@ -48,6 +71,12 @@ class DashboardController extends Controller
         $data = Tiketing::with('category')->get();
 
         return view('admin.tiketing')->with(['data' => $data]);
+    }
+    public function report()
+    {
+        $data = Tiketing::with('category')->get();
+
+        return view('admin.laporan')->with(['data' => $data]);
     }
 
     /**
